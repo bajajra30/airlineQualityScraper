@@ -89,7 +89,7 @@ class AirlineQualitySpider(scrapy.Spider):
                     rating[key] = data[1]
                     rating['verified_user'] = 'True'
                 else:
-                    rating[key] = data[0]
+                    rating[key] = review.xpath(value).extract_first()
             # Set the path of the table rows
             path = 'div[@class="body"]/div[@class="tc_mobile"]/div[@class="review-stats"]/table/tr'
             # Get the rows and get the data from each row
